@@ -1,0 +1,60 @@
+//Rotating black and white cubes. No perfect loop.
+
+let cubes = [];
+let r;
+
+function setup() {
+  createCanvas(600, 600, WEBGL);
+     for (let i = 0; i < 1; i++) {
+    let x = i * 1;
+    let y = i * 1;
+    let z = i * 1;
+    cubes[i] = new C(x, y, z);
+  }
+  r = int(random(cubes.length));
+ 
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < cubes.length; i++) {
+    cubes[i].show();
+    
+  }
+  cubes[r].turn(frameCount * 0.002);
+}
+
+class C {
+  constructor(x, y, z, b) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.b = 50;
+    this.angle = 0;
+  }
+
+  show() {
+    for (let y = 1; y <= 400; y+=50) {
+      for (let x = 1; x <= 5; x++) {
+        for (let z = 1; z <= 15; z++) {
+          //for (let b = 1; b <= 50; b += 10) {
+          push();
+          translate(x + 50 , y - 200, z-200);
+          stroke(255);
+          noFill();
+          box(this.b);
+          x ++;
+          y ++;
+          z +=50;
+          pop();
+          rotateY(this.angle * 0.3) ;                  
+          }
+       }
+    }
+  }
+  turn(angle) {
+    this.angle = angle * 4;
+  }
+}
+
+
