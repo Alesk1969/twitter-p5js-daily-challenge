@@ -1,0 +1,41 @@
+//Must include following files in sketch
+//CCapture.all.min.js
+//CCapture.js
+//download.js
+webm-wrtier-0.2.0.js
+
+//code
+
+//before setup()
+
+let capturer;
+let btn;
+function record() {
+  capturer = new CCapture({
+    format: "webm",
+    framerate: 60
+  });
+capturer.start();
+btn.textContent = "stop recording";
+btn.onclick = e => {
+capturer.stop();
+capturer.save();
+capturer = null;
+btn.textContent = "start recording";
+btn.onclick = record;
+};
+}
+
+//in setup()
+
+frameRate(60)
+btn = document.createElement("button");
+btn.textContent = "start recording";
+document.body.appendChild(btn);
+btn.onclick = record;
+//btn.click(); //start recording automatically
+
+// At the end of draw();
+if (capturer) {
+capturer.capture(document.getElementById("defaultCanvas0"));
+}
