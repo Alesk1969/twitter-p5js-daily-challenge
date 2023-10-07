@@ -1,0 +1,60 @@
+let cubes = [];
+let r;
+
+function setup() {
+  createCanvas(600, 600, WEBGL);
+  colorMode(HSB);
+  for (let i = 0; i < 1; i++) {
+    let x,y,z;
+    cubes[i] = new Cube(x, y, z);
+  }
+  r = int(random(cubes.length));
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < cubes.length; i++) {
+    cubes[i].show();
+  }
+  cubes[r].turn(frameCount * 0.01);
+}
+
+//class
+
+class Cube {
+  constructor(x, y, z, b) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.b = 50;
+    this.a = 0;
+  }
+
+  show() {
+    for (let y = 1; y <= 200; y+=50) {
+      for (let x = 1; x <= 1; x+=0.1) {
+        for (let z = 1; z <= 5; z++) {
+          for (let b = 1; b <= 50; b += 10) {
+          push();
+          translate(x - 10, y - 85, z + 100);
+          rotateY(this.a);
+          rotateZ(this.a);
+          let d = dist(x * 2, y * 2, z * 2, y*2);
+          stroke(d * 0.4, d * 0.5, d * 1.5);
+          noFill();
+          box(this.b);
+          x ++;
+          y ++;
+          z +=50;
+          pop();
+            
+          }
+        }
+      }
+      y++;
+    }
+  }
+  turn(a) {
+  this.a = a * 2;
+  }
+}
