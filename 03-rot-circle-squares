@@ -1,0 +1,76 @@
+let capturer;
+let btn;
+function record() {
+  capturer = new CCapture({
+    format: "webm",
+    framerate: 60
+  });
+capturer.start();
+btn.textContent = "stop recording";
+btn.onclick = e => {
+capturer.stop();
+capturer.save();
+capturer = null;
+btn.textContent = "start recording";
+btn.onclick = record;
+};
+}
+
+let b = [];
+
+function setup() {
+  createCanvas(600, 600);
+
+  for (let i = 0; i < 10; i++) {
+    b.push(new B(i));
+  }
+  
+  frameRate(60)
+btn = document.createElement("button");
+btn.textContent = "start recording";
+document.body.appendChild(btn);
+btn.onclick = record;
+//btn.click(); //start recording automatically
+}
+
+function draw() {
+  background(0);
+  push();
+  translate(width / 2, height / 2);
+  for (let i = 0; i < b.length; i++) {
+    b[i].m();
+    b[i].s();
+  }
+  pop();
+  
+  if (capturer) {
+capturer.capture(document.getElementById("defaultCanvas0"));
+}
+}
+
+class B {
+  constructor() {
+    this.t = 0.1;
+    this.r = random(20, 280);
+    this.speed = 0.04;
+    this.d = 1;
+  }
+
+  m() {
+    this.t += this.speed;
+      }
+  s() {
+    this.rad = this.t * this.d;
+    this.x = this.rad * cos(this.t);
+    this.y = this.rad * sin(this.t);
+    this.v = 0.01;
+    noFill();
+    stroke(255, 80);
+    rotate((this.v += 1));
+    circle(this.x, this.y, this.r);
+    
+    
+    rectMode(CENTER);
+    rect(this.x, this.y, this.r);
+  }
+}
