@@ -1,0 +1,7 @@
+b=[];setup=_=>{createCanvas(w=600,w,WEBGL);
+n=7;sp=0.006/n;for(i=0;i<10;i++){b.push(new B(0,0,sp));}};
+draw=_=>{background(0);for(j=0;j<n;j++){for(a=0;a<n;a++){push();translate(100*j-300,100*a-300);for(i=0;i<b.length;i++){b[i].m();b[i].s();rotate(10);}pop();}}}
+class B{constructor(x,y,sp){t
+his.x x;this.y=y;this.t=100;this.f=sp;this.r=10;}
+s(){noFill();stroke(255,150);rect(this.x, this.y, 50);}
+m(){this.x=this.r*sin(this.t);this.y=this.r*cos(this.t);this.t+=this.f;}}
