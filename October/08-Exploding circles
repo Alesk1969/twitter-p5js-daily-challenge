@@ -1,0 +1,15 @@
+w=60; 
+s=0.1;
+
+setup=_=>{createCanvas(t=600,t);}
+
+draw=_=>{
+background(0);
+for (x = 0; x < t+w; x+=w) {
+for (y = 0; y < t; y+=w) {
+n=noise(x * s, y * s, frameCount * s * 0.001);
+stroke(255);
+ellipse (x,y+25,40*n+(sin(frameCount/20)*30));
+noFill();
+stroke(255,200);
+ellipse (x+sin(frameCount/100)*60,y+25,5*n+(tan(frameCount/100)*60));}}}
