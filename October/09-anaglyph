@@ -1,0 +1,5 @@
+w=60;s=100;setup=_=>{createCanvas(t=600,t)};draw=_=>{background(255,10);blendMode(BLEND);
+for(x=0;x<t+s;x+=s+10){for(y=0;y<t+s;y+=s+10){fill(200,20);strokeWeight(2);
+stroke(0,180,255);rect(x*cos(s),y*cos(s),(cos(frameCount/s)*w));fill(250,20); 
+circle(x*cos(s),y*cos(s) ,(cos(frameCount/s)*w));stroke(255, 20, 0);
+rect(x*cos(s)+2,y*cos(s)+2,(cos(frameCount/s)*w)+4);circle(x*cos(s)+4,y*cos(s)+4,(cos(frameCount/s)*w)+4);}}}
