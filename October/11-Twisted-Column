@@ -1,0 +1,5 @@
+let x1,x2,x3,x4;let d=0;let b=100;s=600;setup=_=>{createCanvas(s,s);};
+draw=_=>{background(0,10);t();};function t(){for(a=0;a<=s;a+=50){x1=(sin((a)+(d/b))*b)+s/2;x2=(sin((a)+(d+PI/2))*b)+s/2;x3=(sin((a)+(d+(PI/2)*2))*b)+s/2;
+x4=(sin((a)+(d+(PI/2)*3))*b)+s/2;stroke(102,0,102);strokeWeight(25);strokeCap(SQUARE);
+if(x1<x2){line(x1,a,x2,a);}stroke(204,0,102);if(x2<x3){line(x2,a,x3,a);}
+stroke(255,0,127);if(x3<x4){line(x3,a,x4,a);}stroke(255,102,178);if(x4<x1){line(x4,a,x1,a);}}d+=0.01;}
