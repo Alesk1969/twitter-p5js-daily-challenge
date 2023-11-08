@@ -1,0 +1,3 @@
+let x1,x3;let d=0;let b=100;s=600;setup=_=>{
+createCanvas(s,s,WEBGL);};draw=_=>{background(0);colorMode(HSB);t();};function t(){for(a=0;a<=s;a+=b){x1=(sin((a)+(d/b)))+200;x3=(tan((b)+(d+(TWO_PI)))*b)+s/8;
+rotateZ(d/10);noFill();stroke(a%250,255,100,0.5);box(x1,x3)}d+=0.01;}
