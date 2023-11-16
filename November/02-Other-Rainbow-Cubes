@@ -1,0 +1,11 @@
+let b=[];setup=_=>{createCanvas(w=600,w,WEBGL);
+colorMode(HSB,360,c=100,c,c);for(let i=0;i<10;i++){b.push(new B(i));}}
+
+draw=_=>{background(220,100);
+for(let i=0;i<b.length;i++){b[i].m();b[i].s();
+}};
+
+class B{constructor(x,y){this.x=x;this.y=y;this.t=100;
+this.v=0.03;this.r=200;this.h=random(360);}s(){box(this.x,this.y, 300);
+for(let i=0;i<360;i++){noFill(); strokeWeight(0.5); stroke(abs(this.h%360),random(60,c),random(50,c),80);}} 
+m(){this.x=this.r*sin(this.t)+50;this.y=this.r*sin(this.t)+50; rotateX (frameCount*0.0005); rotateZ (frameCount*0.0005);this.t+=this.v;}}
