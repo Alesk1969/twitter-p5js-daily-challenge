@@ -1,0 +1,54 @@
+let b = [];
+let tc, tb;
+
+function setup() {
+  createCanvas(600, 600, WEBGL);
+  colorMode(HSB, 360, 100, 100, 100);
+      
+  for (let i = 0; i<10; i++){
+  b.push(new B(i));
+       
+  }  
+}
+
+function draw() {
+    
+background (255);
+  for(let i = 0; i< b.length; i++){
+  b[i].s ();
+  b[i].m ();
+  } 
+  
+}
+
+class B {
+  constructor(x,y) {
+    this.x = x;
+    this.y = y;
+    this.t = 10;
+    this.speed = 0.03;
+    this.rad = 10;
+    this.hue = random (360);
+    }
+  
+  s() {
+    box(400 , 20,20); 
+    
+    for(let i=0; i < 360; i++){
+    stroke(abs(this.hue % 360), 60, 50, 100);
+      noStroke();
+    fill (abs(this.hue % 160), 100, 50,10         );
+  }
+}
+
+  m() {
+    this.x = this.rad * sin(this.t);
+       this.t += this.speed/10;
+    let d = 0.1;
+    rotateX(frameCount * 0.001);
+    rotateZ(frameCount * 0.001);
+      }
+      
+    }
+  
+  
